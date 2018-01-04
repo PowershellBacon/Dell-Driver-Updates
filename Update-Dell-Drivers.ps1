@@ -1,4 +1,4 @@
-﻿#install CCTK
+#install CCTK
 Start-Process -FilePath .\HAPI\HAPIInstall.bat -wait -WindowStyle Hidden
 
 #runs Dell Command update and exports the xml report
@@ -12,6 +12,7 @@ foreach($update in $data.updates.update)
         $release = $update.release
         if($update.name -like "*bios*")
             {
+                #bitlocker Check, powershell for windows10, manage-bde for windows 7
                 if($osv -like "*windows 10*")
                     {
                         Suspend-BitLocker -MountPoint "C:" -RebootCount 1
