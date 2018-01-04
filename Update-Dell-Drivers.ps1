@@ -21,8 +21,11 @@ foreach($update in $data.updates.update)
                     {
                         Manage-bde.exe -protectors -disable c:
                     }
+                #disable bios password with dell cctk
                 Start-Process -FilePath .\cctk.exe -ArgumentList "--setuppwd= --valsetuppwd=YOURCURRENTPASSWORD" -Wait -WindowStyle Hidden
-                start-process -FilePath ".\dcu-cli.exe" -ArgumentList "/forceupdate $release" -Wait -WindowStyle Hidden
+                #install BIOS update
+                Start-process -FilePath ".\dcu-cli.exe" -ArgumentList "/forceupdate $release" -Wait -WindowStyle Hidden
+                #enable bios password with dell cctk
                 Start-Process -FilePath .\cctk.exe -ArgumentList "--setuppwd=YOURDESIREDPASSWORD" -Wait -WindowStyle Hidden
             }
         else
