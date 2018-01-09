@@ -12,7 +12,7 @@ $data = [XML](Get-Content c:\windows\temp\dell_report.xml)
 foreach($update in $data.updates.update)
     {
         $release = $update.release
-        if($update.name -like "*bios*")
+        if($update.name -like "*bios*" -or $update.name -like "*thunderbolt*")
             {
                 #bitlocker Check, powershell for windows10, manage-bde for windows 7
                 if($osv -like "*windows 10*")
