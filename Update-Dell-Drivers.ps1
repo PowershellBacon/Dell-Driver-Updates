@@ -1,3 +1,5 @@
+$osv = (get-wmiobject win32_operatingsystem).caption
+
 #install CCTK
 Start-Process -FilePath .\HAPI\HAPIInstall.bat -wait -WindowStyle Hidden
 
